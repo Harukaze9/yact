@@ -1,0 +1,8 @@
+yact.log
+yact_config
+.generated/*
+!.generated/.gitkeep
+
+commands/*
+!commands/yact.yaml
+.vscode

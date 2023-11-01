@@ -1,0 +1,42 @@
+# step1
+subcommand: 
+  sample-commands:
+    regular:
+      x: "echo regular command"
+    with-args:
+      x: "echo arg1 is {0}, arg2 is {1}"
+    with-args-dup:
+      x: "echo {0} {1} {0} {1}"
+    abbreviated: "echo \"this is abbreviated form\""
+    abbreviated-with-args: "echo \"this is abbreviated form (args are {0} and {1})\""
+  test-dup-matches:
+    x: "echo your arg is {0} and {1}"
+    wakame: "echo wakame is {0}"
+    whale:
+      x: "echo whale is {0} and {1}"
+  command-with-input-completion:
+    x: "echo arg1 is {0}, arg2 is {1} and last is {2}, arg1 is {0}, again."
+    0: "echo apple orange lemon"
+    1: "echo banana grape"
+
+  command-with-three-subcommands:
+    subcommand1: "echo hello"
+    subcommand2: "echo hello"
+    subcommand3: "echo hello"
+stump-command: "echo hello stump"
+
+multiple-case:
+  x:
+    - "echo number of args is 0"
+    - "echo number of args is 1: {0}"
+    - "echo number of args is 3: {0}, {1}, {2}"
+
+multiple-abbreviated-case:
+  - "echo number of args is 0"
+  - "echo number of args is 1: {0}"
+  - "echo number of args is 3: {0}, {1}, {2}"
+    
+
+uma:
+  yummy: echo "hello wakame"
+  

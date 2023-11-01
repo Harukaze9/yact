@@ -1,0 +1,60 @@
+---
+_internal:
+  get-all-command-files: "find $__yact_commands_dir -maxdepth 1 \\( -type f -o -type l \\) -name '*.yaml' -exec basename {} \\;"
+  get-all-command-names: "{self} _internal find-yaml  | sed -E 's|.*/([^/]+).yaml$|\\1|'"
+  list-command: "{self} _internal find-yaml | sed -E 's|.*/([^/]+).yaml$|\\1 (&)|'"
+  find-yaml: "find $__yact_commands_dir -maxdepth 1 \\( -type f -o -type l \\) -name '*.yaml'"
+  reload: "source ${__yact_src_dir}/source-yact.sh"
+list:
+  x: |
+    echo "==== [Installed YACT commands] ====="
+    yact _internal list-command
+    echo "===================================="
+  _help: display the list of YACT commands
+edit:
+  x: "{0} -e"
+  0: "{self} _internal get-all-command-names"
+  _help: open the specified YACT command in a text editor
+register:
+  x: "ln -s $(realpath {0}) ${__yact_commands_dir}; {self} _reload"
+  _help: load the specified .yaml as a YACT command
+new:
+  x:
+    - "touch ${__yact_commands_dir}/{0}.yaml; {self} _reload;"
+    - "touch ${__yact_commands_dir}/{0}.yaml; {self} _reload; {0} -a '{1}'"
+  _help: create a new YACT command
+remove:
+  x: "rm $__yact_commands_dir/{0}.yaml; {self} _reload"
+  0: "{self} _internal get-all-command-names"
+  _help: remove the specified YACT command
+rename:
+  x: "mv ${__yact_commands_dir}/{0}.yaml ${__yact_commands_dir}/{1}.yaml; {self} _reload"
+  0: "{self} _internal get-all-command-names"
+  _help: rename the specified YACT command
+_reload: "{self} _internal reload; echo YACT commands are reloaded"
+_config:
+  get: |
+    local key={0}
+    {self} _config check
+    if grep -q "^\[Config\]" "$__yact_config_path" && grep -A 1000 "^\[Config\]" "$__yact_config_path" | grep -q "^${key}="; then
+        local value=$(sed -n -e "/^\[Config\]/,/^\[/ { /^${key}=/ { s/^${key}=//; p; } }" "$__yact_config_path")
+        echo "$value"
+    else
+        sed -i "/^\[Config\]/a\\$key=" "$__yact_config_path"
+        echo ""
+    fi
+  set: |
+    local key={0}
+    local new_value={1}
+    if grep -q "^\[Config\]" "$__yact_config_path" && grep -A 1000 "^\[Config\]" "$__yact_config_path" | grep -q "^${key}="; then
+        sed -i -e "/^\[Config\]/,/^\[/ s/^${key}=.*/${key}=${new_value}/" "$__yact_config_path"
+    else
+        sed -i "/^\[Config\]/a\\$key=$new_value" "$__yact_config_path"
+    fi
+  del: "{self} _config set {0} \"\""
+  check: |
+    if [ ! -f "$__yact_config_path" ]; then
+        echo "[Config]" > "$__yact_config_path"
+    fi
+  
+
