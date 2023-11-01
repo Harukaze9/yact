@@ -1,7 +1,7 @@
 use serde_yaml::{Value};
 use ascii_tree::{Tree, write_tree};
 
-use super::{command_extractor, extractor_util, yact_constants};
+use super::{extractor_util, yact_constants};
 
 pub fn extract_filename_from_path(path: &str) -> &str {
     path.split('/').last().and_then(|filename| {

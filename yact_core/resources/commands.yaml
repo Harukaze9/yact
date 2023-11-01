@@ -35,8 +35,3 @@ multiple-abbreviated-case:
   - "echo number of args is 0"
   - "echo number of args is 1: {0}"
   - "echo number of args is 3: {0}, {1}, {2}"
-    
-
-uma:
-  yummy: echo "hello wakame"
-  

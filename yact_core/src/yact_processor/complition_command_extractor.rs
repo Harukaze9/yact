@@ -69,7 +69,7 @@ pub fn extract_completion_command_from_yaml(doc: &Value, params: &[&str], root_n
 fn get_available_options_text(current_value: &Value, args: &Vec<&str>) -> String {
     let mut available_options = vec!["-a"];
 
-    let commands = extractor_util::get_commands(current_value);
+    let _commands = extractor_util::get_commands(current_value);
 
 
     if args.is_empty() {

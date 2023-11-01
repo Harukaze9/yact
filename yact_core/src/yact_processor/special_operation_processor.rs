@@ -1,9 +1,9 @@
 use log::info;
-use serde_yaml::{Value, to_string};
+use serde_yaml::{Value};
 use std::fs::File;
 use std::io::Write;
 use super::command_traverser::traverse_yaml_by_params;
-use super::{extractor_util, SpecialOperationType, OperationResult, OperationStatus, utils, yact_constants};
+use super::{SpecialOperationType, OperationResult, OperationStatus, utils, yact_constants};
 
 pub fn operate_command_on_yaml(doc: Value, yaml_path: String, operation_type: SpecialOperationType, keys: &[&str], args: &[&str]) -> OperationResult {
     info!("keys are: [{}], args are] [{}]", keys.join(" "), args.join(" "));
