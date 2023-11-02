@@ -122,11 +122,11 @@ Loading a `command-name.yaml` YACT file results in the `command-name` YACT comma
 YACT commands come with built-in options that allow you to review or edit commands.
 
 #### `-p`: Display a tree of sub-commands
-Format: `[YACT command path] -p`
+Format: `$ <YACT command path> -p`
 This displays all commands in a tree format, starting from the specified path.
 
 #### `-a`: Add a command to the specified path
-Format: `[YACT command path] -a [desired executable command]`
+Format: `$ <YACT command path> -a <desired executable command>`
 You can pass the desired executable command using the `-a` option to any YACT command path.
 ```
 $ foo your another subcommand -a 'echo "you can add any commands here!"'
@@ -134,7 +134,7 @@ $ foo your another subcommand -a 'echo "you can add any commands here!"'
 If the path doesn't exist, it gets added. If both the path and command already exist, the existing command gets overwritten.
 
 #### `-r`: Remove the specified path
-Format: `[YACT command path] -r`
+Format: `$ <YACT command path> -r`
 You can delete a predefined YACT command path by passing the -r option.
 ```
 $ foo unused-command pull -r
@@ -142,7 +142,7 @@ $ foo unused-command pull -r
 If the path doesn't exist, it's added. If both the path and command exist, the existing command is overwritten.
 
 #### `-e`: Open the command in a text editor
-Format: `[command-name] -e`
+Format: `$ <command-name> -e`
 Executing a YACT command with the `-e` option opens the YACT file in the configured text editor.
 
 ## Utilities
