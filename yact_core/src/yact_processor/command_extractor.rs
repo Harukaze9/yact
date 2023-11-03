@@ -36,7 +36,7 @@ pub fn extract_command_from_yaml(doc: &Value, params: &[&str], root_name: &str) 
     // when no commands are defined
     OperationResult {
         status: OperationStatus::NoExecCommands,
-        result: "".to_string(),
+        result: "colorlize".to_string(),
         message: generate_no_command_message(params, &params[..params.len()-args.len()], doc, root_name)
     }
 }

@@ -27,3 +27,8 @@ cargo build --release --manifest-path "${__yact_root_dir}/yact_core/Cargo.toml"
 echo "[build.sh] Finished building yact_core."
 cp "${__yact_root_dir}/yact_core/target/release/yact_core" "${__yact_root_dir}/bin/yact_core_${os_name}"
 echo "[build.sh] Copied: ${__yact_root_dir}/yact_core/target/release/yact_core => ${__yact_root_dir}/bin/yact_core_${os_name}"
+
+cargo build --release --manifest-path "${__yact_root_dir}/yact_colorlizer/Cargo.toml"
+echo "[build.sh] Finished building yact_colorlizer."
+cp "${__yact_root_dir}/yact_colorlizer/target/release/yact_colorlizer" "${__yact_root_dir}/bin/yact_colorlizer_${os_name}"
+echo "[build.sh] Copied: ${__yact_root_dir}/yact_colorlizer/target/release/yact_colorlizer => ${__yact_root_dir}/bin/yact_colorlizer_${os_name}"

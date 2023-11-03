@@ -16,15 +16,15 @@ export YACT_LOGGER_PATH="${__yact_src_dir}/yact-debug-logger.sh"
 case "$(uname)" in
     Darwin)  # macOS
         YACT_CORE_PATH="${__yact_root_dir}/bin/yact_core_macos"
+        YACT_COLORLIZER_PATH="${__yact_root_dir}/bin/yact_colorlizer_macos"
         ;;
     Linux)   # Linux
         YACT_CORE_PATH="${__yact_root_dir}/bin/yact_core_linux"
-        ;;
-    *)
-        YACT_CORE_PATH="${__yact_root_dir}/yact_core/target/release/yact_core"
+        YACT_COLORLIZER_PATH="${__yact_root_dir}/bin/yact_colorlizer_linux"
         ;;
 esac
 export YACT_CORE_PATH;
+export YACT_COLORLIZER_PATH;
 if [[ ! -x "$YACT_CORE_PATH" ]]; then
     echo "WARNING: No yact_core executable found at $YACT_CORE_PATH. To use YACT, please resolve this issue."
 fi

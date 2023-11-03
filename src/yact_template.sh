@@ -51,7 +51,11 @@
     if [ "$status_output" = "command" ]; then
         eval "${result}"
     else
-        echo "${message}"
+        if [ "$result" = "colorlize" ]; then
+            echo "${message}" | ${YACT_COLORLIZER_PATH}
+        else
+            echo "${message}"
+        fi
     fi
 }
 

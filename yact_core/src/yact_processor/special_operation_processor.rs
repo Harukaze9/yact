@@ -122,7 +122,7 @@ fn peak_yaml(doc: &Value, keys: &[&str], yaml_path: &str) -> OperationResult {
 
     OperationResult { 
         status: OperationStatus::SpecialOperation, 
-        result: String::new(), 
+        result: "colorlize".to_string(), 
         message: msg,
     }
 }
