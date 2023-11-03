@@ -18,7 +18,12 @@ esac
 if grep -q "# >>> YACT added lines >>>" "$config_file"; then
     echo "Removing YACT configuration from $config_file..."
     
-    sed -i '/# >>> YACT added lines >>>/,/# <<< YACT added lines <<</d' "$config_file"
+    if [[ "$(uname)" == "Darwin" ]]; then
+        # for mac OS
+        sed -i '' '/# >>> YACT added lines >>>/,/# <<< YACT added lines <<</d' "$config_file"
+    else
+        sed -i '/# >>> YACT added lines >>>/,/# <<< YACT added lines <<</d' "$config_file"
+    fi
     
     echo "YACT configuration has been successfully removed from $config_file."
 else
