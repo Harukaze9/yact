@@ -20,6 +20,7 @@ pub fn generate_tree_string(name: &str, value: &Value, show_detail: &bool) -> St
     let node = generate_node_recursively(name, value, show_detail);
     let mut output = String::new();
     let _ = write_tree(&mut output, &node);
+    output.insert_str(0, "---\n");
     return output;
 }
 
