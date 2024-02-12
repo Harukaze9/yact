@@ -25,7 +25,7 @@
     done
 
     # Handle "-a" option with no arguments
-    if [[ ${#params[@]} -gt 0 && "${params[${#params[@]} - 1]}" == "-a" ]]; then
+    if [ ${#params[@]} -gt 0 ] && [ "${params[${#params[@]}]}" = "-a" ]; then
         local last_command=$(fc -ln -1 | sed 's/^[[:space:]]*//')
 
         if [[ -z "$last_command" ]]; then
