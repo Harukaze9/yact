@@ -39,7 +39,7 @@ fi
 
 # ============  load commands from YAML ========================== #
 __yact_source_each_yaml_commands() {
-  find ${__yact_generated_dir} -name "*.sh" -type f -delete
+  find "${__yact_generated_dir}" -name "*.sh" -type f -exec rm -f {} \;
   for source_yaml in `find "${__yact_commands_dir}" -maxdepth 1 \( -type f -o -type l \) -name "*.yaml" `
   do
     local basename=$(basename "${source_yaml}" .yaml)
